@@ -7,5 +7,5 @@ Match Group {{ sftp_group_name }}
     X11Forwarding no
 # ForceCommand internal-sftp
     PasswordAuthentication {% if sftp_allow_passwords %}yes{% else %}no{% endif %}
-
+    PubkeyAuthentication yes
 # End SFTP-Server block
