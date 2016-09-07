@@ -57,11 +57,11 @@
 
 # Create directories for SFTP users. Optional, but recommended.
 - name: SFTP-Server | Create directories
-  file: path="{{ sftp_home_partition }}/{{ item[0].name }}/{{ item[1] }}"
-        owner={{ item[0].name }}
-        group={{ item[0].name }}
+  file: path="{{ sftp_home_partition }}/{{ item.0.name }}/{{ item.1 }}"
+        owner={{ item.0.name }}
+        group={{ item.0.name }}
         mode="0750"
         state=directory
-  with_nested:
-    - sftp_users
-    - sftp_directories
+  with_subelements:
+    - "{{ sftp_users }}"
+    - directories
