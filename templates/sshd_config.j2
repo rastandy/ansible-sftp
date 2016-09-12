@@ -1,11 +1,12 @@
 {{ sftp_sshd_config_content.stdout }}
 
-# Begin SFTP-Server block
+# Begin SFTP-Server {{ sftp_group_name }} block
 Match Group {{ sftp_group_name }}
     ChrootDirectory %h
     AllowTCPForwarding no
+    AllowAgentForwarding no
     X11Forwarding no
-# ForceCommand internal-sftp
+    ForceCommand {{ sftp_force_command }}
     PubkeyAuthentication yes
     PasswordAuthentication {% if sftp_allow_passwords %}yes{% else %}no{% endif %}
 
