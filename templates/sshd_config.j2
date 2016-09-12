@@ -6,7 +6,9 @@ Match Group {{ sftp_group_name }}
     AllowTCPForwarding no
     AllowAgentForwarding no
     X11Forwarding no
+{%if sftp_force_command %}
     ForceCommand {{ sftp_force_command }}
+{% endif %}
     PubkeyAuthentication yes
     PasswordAuthentication {% if sftp_allow_passwords %}yes{% else %}no{% endif %}
 
