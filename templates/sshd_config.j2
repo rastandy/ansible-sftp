@@ -10,4 +10,4 @@ Match Group {{ sftp_group_name }}
     PubkeyAuthentication yes
     PasswordAuthentication {% if sftp_allow_passwords %}yes{% else %}no{% endif %}
 
-# End SFTP-Server block
+# End SFTP-Server {{ sftp_group_name }} block
